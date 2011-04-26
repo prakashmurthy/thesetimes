@@ -1,0 +1,13 @@
+<table id="selector">
+  <tr>
+    <th>Time</th>
+    <%= day_headers %>
+  </tr>
+  
+  <% @time_ranges.each do |time| %>
+    <tr>
+      <td class="time-range"><%= time %></td>
+      <%= time_fields(time) %>
+    </tr>
+  <% end %>
+</table>

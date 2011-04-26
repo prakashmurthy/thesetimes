@@ -1,0 +1,38 @@
+body {
+  padding: 10px;
+  margin: 0px;
+}
+
+#selector {
+  float: left;
+}
+
+#container {
+  width: 1050px;
+}
+
+.clear {
+  clear: both;
+}
+
+aside {
+  float: right;
+  width: 200px;
+}
+
+td {
+  width: 100px;
+}
+
+tr:nth-child(2n+3) {
+  background: #F9EDFA;
+}
+
+tr:nth-child(2n+2) {
+  background: #EDF9FA;
+}
+
+.time-range {
+  line-height: 40px;
+  text-align: center;
+}

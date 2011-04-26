@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>thesetimes - Show when you're available</title>
+    <%= stylesheet_link_tag :all %>
+    <%= javascript_include_tag "jquery", "application" %>
+    <%= csrf_meta_tag %>
+  </head>
+
+  <body>
+
+    <header>
+      <h1>thesetimes</h1>
+      <p>When you just need to let someone know when you're available, create a set of times and share it with them.</p>
+      <a href="#" id="header-collapse">collapse</a>
+    </header>
+
+    <div id="container">
+      <%= yield %>
+
+      <aside>
+        The permalink for this schedule is <%= link_to "here", short_url(:key => @timeset.short_url)%>.
+      </aside>
+    </div>
+
+    <div class="clear"></div>
+
+    <footer>Made by @aarongodin</footer>
+
+  </body>
+</html>
