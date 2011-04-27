@@ -25,7 +25,7 @@ $(function() {
           var startTimeBlock = s.start.replace(/:\d{2}/, ":00");
           var start = $('#selector tr[data-time="' + startTimeBlock + '"] td[data-day="' + s.day + '"]').first();
           
-          var topOffset = start.offset().top + ((/:(\d{2})/)(s.start)[1] / 60) * start.height();
+          var topOffset = start.offset().top + (/:(\d{2})/.exec(s.start)[1] / 60) * start.height();
           topOffset = Math.round(topOffset);
           
           var leftOffset = start.offset().left;
@@ -33,7 +33,7 @@ $(function() {
           var endTimeBlock = s.end.replace(/:\d{2}/, ":00");
           var end = $('#selector tr[data-time="' + endTimeBlock + '"] td[data-day="' + s.day + '"]').first();
           
-          var divHeight = end.offset().top + ((/:(\d{2})/)(s.end)[1] / 60) * end.height() - topOffset;
+          var divHeight = end.offset().top + (/:(\d{2})/.exec(s.end)[1] / 60) * end.height() - topOffset;
           divHeight = Math.round(divHeight);
           
           var newSection = $('<div></div>');
