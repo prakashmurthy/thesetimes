@@ -1,4 +1,4 @@
-module TimesetHelper
+module TimesetsHelper
   def day_headers
     html = ""
     

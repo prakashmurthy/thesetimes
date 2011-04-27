@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>thesetimes - Show when you're available</title>
+    <title>thesetimes - Share a set of times</title>
     <%= stylesheet_link_tag :all %>
-    <%= javascript_include_tag "jquery", "application" %>
+    <%= javascript_include_tag "jquery", "setup", "application" %>
     <%= csrf_meta_tag %>
   </head>
 
   <body>
+    <% if flash[:alert] %>
+      <p class="alert"><%= flash[:alert] %></p>
+    <% end %>
 
     <header>
       <h1>thesetimes</h1>
-      <p>When you just need to let someone know when you're available, create a set of times and share it with them.</p>
-      <a href="#" id="header-collapse">collapse</a>
+      <p class="tagline">Create a set of times and share it.</p>
     </header>
 
     <div id="container">
       <%= yield %>
 
       <aside>
-        The permalink for this schedule is <%= link_to "here", short_url(:key => @timeset.short_url)%>.
+        <p>The permalink for this schedule is <%= link_to "here", short_url(:key => @timeset.short_url)%>.</p>
+        
+        <h4>Howto:</h4>
+        <p>Click on a time slot and drag down to create a time range. Save is automatic, just keep the permalink around.</p>
+        <p>Delete time slots by clicking them.</p>
+        
+        <h4>Find an Error?</h4>
+        <p>Email <a href="mailto:godin.aaron@gmail.com">me</a> and put "thesetimes" in the subject. I appreciate your help!</p>
       </aside>
     </div>
 
     <div class="clear"></div>
 
-    <footer>Made by @aarongodin</footer>
-
+    <footer>Made by <a href="http://twitter.com/aarongodin">@aarongodin</a></footer>
   </body>
 </html>

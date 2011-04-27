@@ -10,14 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110425195320) do
+ActiveRecord::Schema.define(:version => 20110426194958) do
 
   create_table "sections", :force => true do |t|
-    t.time     "start"
-    t.time     "end"
+    t.string   "start"
+    t.string   "end"
     t.integer  "timeset_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "day"
   end
 
   create_table "timesets", :force => true do |t|

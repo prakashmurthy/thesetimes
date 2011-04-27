@@ -4,8 +4,9 @@ describe Section do
   describe "When creating a new section" do
     it "should be filled in" do
       valid_attributes = {
-        :start => Time.now,
-        :end => Time.now + 1.hour,
+        :start => "7:00 AM",
+        :end => "8:00 AM",
+        :day => "sunday",
         :timeset_id => 1
       }
       
@@ -29,6 +30,18 @@ describe Section do
     
     it "should not be valid without a timeset id" do
       @s.errors_on(:timeset_id).should include("can't be blank")
+    end
+    
+    it "should not be vaild without a day" do
+      @s.errors_on(:day).should include("can't be blank")
+    end
+  end
+  
+  describe "When outputting the time range" do
+    it "should be from start to end" do
+      section = Section.create :start => "7:00 AM", :end => "8:00 AM", :day => "sunday", :timeset_id => 1
+      
+      section.time_range.should == "7:00 AM to 8:00 AM"
     end
   end
   

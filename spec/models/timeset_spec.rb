@@ -1,16 +1,10 @@
 require 'spec_helper'
 
-describe Timeset do
-  describe "When generating a key" do
-    it "should be 5 characters long" do
-      Timeset.generate_key.length.should == 5
-    end
-  end
-  
+describe Timeset do  
   describe "When creating a new record" do
     it "should generate a key" do
       t = Timeset.create
-      t.short_url.length.should == 5
+      t.short_url.length.should == 10
     end
   end
   
@@ -19,6 +13,26 @@ describe Timeset do
       t = Timeset.create
       t.sections.create :start => Time.now, :end => Time.now + 1.hour
       t.sections.length.should == 1
+    end
+  end
+  
+  describe "When cleaning times" do
+    it "should change 8:60 into 9:00" do
+      times = {:start => "8:60 AM"}
+      times = Timeset.clean_times times
+      times[:start].should == "9:00 AM"
+    end
+    
+    it "should change 12:60 PM into 1:00 PM" do
+      times = {:start => "12:60 PM"}
+      times = Timeset.clean_times times
+      times[:start].should == "1:00 PM"
+    end
+    
+    it "should change from AM to PM" do
+      times = {:start => "11:60 AM"}
+      times = Timeset.clean_times times
+      times[:start].should == "12:00 PM"
     end
   end
   

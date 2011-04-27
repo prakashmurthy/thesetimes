@@ -1,11 +1,11 @@
-<table id="selector">
+<table id="selector" data-short-url="<%= @timeset.short_url %>" data-new="<%= @new_flag %>">
   <tr>
     <th>Time</th>
     <%= day_headers %>
   </tr>
   
   <% @time_ranges.each do |time| %>
-    <tr>
+    <tr data-time="<%= time %>">
       <td class="time-range"><%= time %></td>
       <%= time_fields(time) %>
     </tr>

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TimesetController do
+describe TimesetsController do
   describe "A get request to the view action" do
     it "should render the view template" do
       get :view
