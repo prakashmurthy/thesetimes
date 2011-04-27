@@ -13,15 +13,15 @@ $(function() {
     var topOffset = e.pageY;
     leftOffset = $(this).offset().left;
         
-    var currentSection = $('<div></div>', {
-      class: 'current section',
-      css: {
-        top: topOffset + "px",
-        left: leftOffset + "px"
-      }
+    var currentSection = $('<div></div>');
+    currentSection.addClass('section').addClass('current');
+    currentSection.css({
+      top: topOffset + "px",
+      left: leftOffset + "px"
     });
     currentSection.attr("data-day", $(this).data('day'));
-    currentSection.attr("data-start-time", Math.round((e.offsetY / $(this).height()) * 60));
+    var starttime = Math.round(((e.pageY - $(this).offset().top) / $(this).height()) * 60);
+    currentSection.attr("data-start-time", starttime);
     currentSection.appendTo('body');
     
     $('#selector, .current.section').mousemove(function(e) {
@@ -46,7 +46,7 @@ $(function() {
       var day = start.data("day");
 
       var startMinutes = current.data("start-time");
-      var endMinutes = Math.round((e.offsetY / end.height()) * 60);
+      var endMinutes = Math.round(((e.pageY - end.offset().top) / end.height()) * 60);
       
       startMinutes = (startMinutes > 10) ? startMinutes : "0" + startMinutes;
       endMinutes = (endMinutes > 10) ? endMinutes : "0" + endMinutes;

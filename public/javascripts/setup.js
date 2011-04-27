@@ -36,14 +36,13 @@ $(function() {
           var divHeight = end.offset().top + ((/:(\d{2})/)(s.end)[1] / 60) * end.height() - topOffset;
           divHeight = Math.round(divHeight);
           
-          var newSection = $('<div></div>', {
-            class: 'section',
-            css: {
-              height: divHeight + "px",
-              top: topOffset + "px",
-              left: leftOffset + "px"
-            }
+          var newSection = $('<div></div>');
+          newSection.css({
+            height: divHeight + "px",
+            top: topOffset + "px",
+            left: leftOffset + "px"
           });
+          newSection.addClass('section');
           newSection.appendTo("body");
           newSection.attr("data-id", s.id);
         });
