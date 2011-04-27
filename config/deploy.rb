@@ -6,7 +6,7 @@ set :use_sudo, false
 set :user, "godinaa"
 
 set :application, "thesetimes.info"
-set :repository,  "godinaa@thesetimes.info:/home/godinaa/git/thesetimes.git"
+set :repository,  "git@github.com:aarongodin/thesetimes.git"
 set :scm, :git
 set :branch, 'master'
 set :git_shallow_clone, 1
