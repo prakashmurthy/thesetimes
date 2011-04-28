@@ -3,11 +3,10 @@
   <head>
     <title>thesetimes - Share a set of times</title>
     <%= stylesheet_link_tag :all %>
-    <%= javascript_include_tag "jquery", "apprise", "setup", "run", "locking", "snapping" %>
+    <%= javascript_include_tag "jquery", "apprise", "setup", "run", "locking", "snapping", "email" %>
     <%= csrf_meta_tag %>
     
     <script type="text/javascript">
-
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-22643705-2']);
       _gaq.push(['_trackPageview']);
@@ -17,7 +16,6 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
-
     </script>
   </head>
 
@@ -44,6 +42,7 @@
         <h4>Actions</h4>
         <p><a href="#" id="<%= @timeset.locked? ? 'unlock' : 'lock' %>"><%= @timeset.locked? ? "Unlock" : "Lock" %></a></p>
         <p><a href="#" id="snapping" data-snap="false">Enable Snapping</a></p>
+        <p><a href="#" id="email">Send in E-mail</a></p>
         
         <h4>Find an Error?</h4>
         <p>Email <a href="mailto:godin.aaron@gmail.com">me</a> and put "thesetimes" in the subject. I appreciate your help!</p>
