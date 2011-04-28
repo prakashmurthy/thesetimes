@@ -8,17 +8,17 @@
 
 $(function() {  
   
-  $('td.field').mousedown(function(e) {
+  $('#selector').mousedown(function(e) {
     // if the timeset is locked, we aren't doing anything
     if ($('#selector').attr('data-locked') === "true") return false;
     
     // note where we are starting on the clicked table cell
-    var start = $(this);
+    var start = $(e.target);
     start.addClass("start");
     
     // calculate the offsets of the starting table cell
     var topOffset = e.pageY;
-    leftOffset = $(this).offset().left;
+    leftOffset = start.offset().left;
     
     // create the new section div
     var currentSection = $('<div></div>');
@@ -29,12 +29,12 @@ $(function() {
     });
     
     // remember which day that this section is landing on
-    currentSection.attr("data-day", $(this).data('day'));
+    currentSection.attr("data-day", start.data('day'));
     
     // calculate an amount of minutes starting based on the offest of the mouse click to the top of the clicked table cell
     // Firefox's event object doesn't have an offsetY or offsetX property, so I needed to use pageY
     // --> e.pageY - $(this).offset().top
-    var startMinutes = Math.round(((e.pageY - $(this).offset().top) / $(this).height()) * 60);
+    var startMinutes = Math.round(((e.pageY - start.offset().top) / start.height()) * 60);
     currentSection.attr("data-start-minutes", startMinutes);
     
     // finally, append this div to the body
@@ -50,7 +50,7 @@ $(function() {
     });
   });
   
-  $('td.field').mouseup(function(e) {
+  $('#selector').mouseup(function(e) {
     // checking if the time set is locked
     if ($('#selector').attr('data-locked') === "true") return false;
     
@@ -65,7 +65,7 @@ $(function() {
     var start = start.first();
     
     // store this clicked table cell as the ending cell
-    var end = $(this);
+    var end = $(e.target);
     
     // Make sure that start is there. If not, we had an issue somewhere.
     if (start.size() === 1) {
