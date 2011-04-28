@@ -3,7 +3,7 @@
   <head>
     <title>thesetimes - Share a set of times</title>
     <%= stylesheet_link_tag :all %>
-    <%= javascript_include_tag "jquery", "apprise", "setup", "run", "locking", "snapping", "email" %>
+    <%= javascript_include_tag "jquery", "apprise", "setup", "run", "locking" %>
     <%= csrf_meta_tag %>
     
     <script type="text/javascript">
@@ -41,8 +41,8 @@
         
         <h4>Actions</h4>
         <p><a href="#" id="<%= @timeset.locked? ? 'unlock' : 'lock' %>"><%= @timeset.locked? ? "Unlock" : "Lock" %></a></p>
-        <p><a href="#" id="snapping" data-snap="false">Enable Snapping</a></p>
-        <p><a href="#" id="email">Send in E-mail</a></p>
+        <!--<p><a href="#" id="snapping" data-snap="false">Enable Snapping</a></p>
+        <p><a href="#" id="email">Send in E-mail</a></p>-->
         
         <h4>Find an Error?</h4>
         <p>Email <a href="mailto:godin.aaron@gmail.com">me</a> and put "thesetimes" in the subject. I appreciate your help!</p>
