@@ -7,6 +7,11 @@ gem 'rails', '3.0.3'
 
 group :test, :development do
   gem "rspec-rails", "2.5"
+  gem 'sqlite3-ruby', '1.2.1'
+end
+
+group :production do
+  gem "mysql2"
 end
 
 # Use unicorn as the web server
@@ -18,7 +23,7 @@ gem 'capistrano'
 gem "bcrypt-ruby", "2.1.4"
 
 # sqlite3-ruby for DH
-gem 'sqlite3-ruby', '1.2.1'
+
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
