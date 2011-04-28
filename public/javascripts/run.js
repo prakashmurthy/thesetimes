@@ -12,6 +12,9 @@ $(function() {
     // if the timeset is locked, we aren't doing anything
     if ($('#selector').attr('data-locked') === "true") return false;
     
+    // also, make sure the clicked cell is a td and a field
+    if (!$(e.target).is('td') || !$(e.target).hasClass('field')) return false;
+    
     // note where we are starting on the clicked table cell
     var start = $(e.target);
     start.addClass("start");
