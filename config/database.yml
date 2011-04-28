@@ -16,7 +16,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: em_mysql2
+  adapter: mysql2
   database: thesetimes
   username: thesetimes
   password: supertonemaster
