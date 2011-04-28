@@ -48,7 +48,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    mysql2 (0.3.2)
+    mysql2 (0.2.7)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -101,7 +101,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (= 2.1.4)
   capistrano
-  mysql2
+  mysql2 (= 0.2.7)
   rails (= 3.0.3)
   rspec-rails (= 2.5)
   sqlite3-ruby (= 1.2.1)
