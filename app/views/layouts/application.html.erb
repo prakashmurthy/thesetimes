@@ -3,7 +3,7 @@
   <head>
     <title>thesetimes - Share a set of times</title>
     <%= stylesheet_link_tag :all %>
-    <%= javascript_include_tag "jquery", "setup", "application" %>
+    <%= javascript_include_tag "jquery", "apprise", "setup", "application", "locking" %>
     <%= csrf_meta_tag %>
     
     <script type="text/javascript">
@@ -40,6 +40,9 @@
         <h4>Howto:</h4>
         <p>Click on a time slot and drag down to create a time range. Save is automatic, just keep the permalink around.</p>
         <p>Delete time slots by clicking them.</p>
+        
+        <h4>Actions</h4>
+        <p><a href="#" id="<%= @timeset.locked? ? 'unlock' : 'lock' %>"><%= @timeset.locked? ? "Unlock" : "Lock" %></a></p>
         
         <h4>Find an Error?</h4>
         <p>Email <a href="mailto:godin.aaron@gmail.com">me</a> and put "thesetimes" in the subject. I appreciate your help!</p>
