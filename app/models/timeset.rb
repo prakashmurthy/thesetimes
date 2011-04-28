@@ -1,6 +1,36 @@
+require 'bcrypt'
+
 class Timeset < ActiveRecord::Base
   before_create :generate_short_url
   has_many :sections
+  
+  def lock(password)
+    unless password.blank?
+      salt = BCrypt::Engine.generate_salt
+      pass = BCrypt::Engine.hash_secret password, salt
+      
+      self.update_attributes :locked => true, :lock_password => pass, :lock_salt => salt
+      return true
+    else
+      return false
+    end
+  end
+  
+  def unlock(password)
+    unless password.blank?
+      salt = BCrypt::Engine.generate_salt
+      test_pass = BCrypt::Engine.hash_secret password, self.lock_salt
+      
+      if self.lock_password == test_pass
+        self.update_attributes :locked => false
+        return true
+      else
+        return false
+      end
+    else
+      return false
+    end
+  end
   
   def generate_short_url
     if self.new_record?

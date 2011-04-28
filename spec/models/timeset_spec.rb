@@ -16,6 +16,70 @@ describe Timeset do
     end
   end
   
+  describe "When locking a timeset" do
+    describe "Given a password" do
+      before(:each) do
+        @t = Timeset.create
+        @t.lock "testphrase"
+      end
+
+      it "should set the timeset to locked" do
+        @t.should be_locked
+      end
+
+      it "should fill in the password" do
+        @t.lock_password.should_not be_nil
+      end
+      
+      it "should fill the salt" do
+        @t.lock_salt.should_not be_nil
+      end
+    end
+    
+    it "should not lock if not given a password" do
+      t = Timeset.create
+      t.lock ""
+      t.should_not be_locked
+    end
+    
+    it "should return false if not given a password" do
+      t = Timeset.create
+      t.lock("").should be_false
+    end
+  end
+  
+  describe "When unlocking a timeset" do
+    describe "Given the correct password" do
+      it "should unlock it" do
+        t = Timeset.create
+        t.lock "testphrase"
+        t.unlock "testphrase"
+        t.should_not be_locked
+      end
+      
+      it "should return true" do
+        t = Timeset.create
+        t.lock "testphrase"
+        t.unlock("testphrase").should be_true
+      end
+    end
+    
+    describe "Given the incorrect password" do
+      it "should not unlock it" do
+        t = Timeset.create
+        t.lock "testphrase"
+        t.unlock "wrongphrase"
+        t.should be_locked
+      end
+      
+      it "should return false" do
+        t = Timeset.create
+        t.lock "testphrase"
+        t.unlock("wrongphrase").should be_false
+      end
+    end
+  end
+  
   describe "When cleaning times" do
     it "should change 8:60 into 9:00" do
       times = {:start => "8:60 AM"}

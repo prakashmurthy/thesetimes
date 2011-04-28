@@ -15,6 +15,8 @@ end
 # Deploy with Capistrano
 gem 'capistrano'
 
+gem "bcrypt-ruby", "2.1.4"
+
 # sqlite3-ruby for DH
 gem 'sqlite3-ruby', '1.2.1'
 
