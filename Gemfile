@@ -10,7 +10,9 @@ group :test, :development do
   gem 'sqlite3-ruby', '1.2.1'
 end
 
-gem "mysql2"
+group :production do 
+  gem "mysql2"
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'
