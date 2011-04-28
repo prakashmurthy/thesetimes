@@ -30,4 +30,39 @@ describe TimesetsController do
       end
     end
   end
+  
+  describe "A post request to the lock action" do
+    it "should lock the timeset when given a password" do
+      @t = Timeset.create
+      post :lock, :key => @t.short_url, :pass => "abcd"
+      @t.reload
+      @t.should be_locked
+    end
+    
+    it "should not lock the timeset if the password is blank" do
+      @t = Timeset.create
+      post :lock, :key => @t.short_url, :pass => ""
+      @t.reload
+      @t.should_not be_locked
+    end
+  end
+  
+  describe "A post request to the unlock action" do
+    before(:each) do
+      @t = Timeset.create
+      @t.lock "password"
+    end
+    
+    it "should unlock the timeset when given the correct password" do
+      post :unlock, :key => @t.short_url, :pass => "password"
+      @t.reload
+      @t.should_not be_locked
+    end
+    
+    it "should not unlock the timeset if the password is blank" do
+      post :unlock, :key => @t.short_url, :pass => ""
+      @t.reload
+      @t.should be_locked
+    end
+  end
 end

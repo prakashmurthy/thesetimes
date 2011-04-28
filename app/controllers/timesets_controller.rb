@@ -14,4 +14,22 @@ class TimesetsController < ApplicationController
     
     @time_ranges = Timeset.time_intervals(6, 9)
   end
+  
+  def lock
+    @timeset = Timeset.find_by_short_url params[:key]
+    @success = @timeset.lock params[:pass]
+    
+    respond_to do |format|
+      format.js {render :locking}
+    end
+  end
+  
+  def unlock
+    @timeset = Timeset.find_by_short_url params[:key]
+    @success = @timeset.unlock params[:pass]
+    
+    respond_to do |format|
+      format.js {render :locking}
+    end
+  end
 end

@@ -1,0 +1,18 @@
+if (<%= @success %>) {
+  var handler = $('#lock, #unlock');
+  var handlerId = handler.attr('id');
+  
+  if (handlerId == "lock") {
+    // lock everything on the page with unbinding
+    
+    // change text and id for handler
+    handler.attr('id', "unlock").text("Unlock");
+  }
+  
+  if (handlerId == "unlock") {
+    // unlock everything on the page by binding events
+    
+    // change test and id for handler
+    handler.attr("id", "lock").text("Lock");
+  }
+}
