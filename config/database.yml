@@ -21,5 +21,3 @@ production:
   username: thesetimes
   password: supertonemaster
   host: taylor.thesetimes.info
-  pool: 5
-  timeout: 5000
