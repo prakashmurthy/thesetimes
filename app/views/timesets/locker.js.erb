@@ -2,17 +2,15 @@ if (<%= @success %>) {
   var handler = $('#lock, #unlock');
   var handlerId = handler.attr('id');
   
+  var selector = $('#selector');
+  
   if (handlerId == "lock") {
-    // lock everything on the page with unbinding
-    
-    // change text and id for handler
+    selector.attr("data-locked", "true");
     handler.attr('id', "unlock").text("Unlock");
   }
   
   if (handlerId == "unlock") {
-    // unlock everything on the page by binding events
-    
-    // change test and id for handler
+    selector.attr("data-locked", "false");
     handler.attr("id", "lock").text("Lock");
   }
 }

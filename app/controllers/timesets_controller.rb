@@ -20,7 +20,7 @@ class TimesetsController < ApplicationController
     @success = @timeset.lock params[:pass]
     
     respond_to do |format|
-      format.js {render :locking}
+      format.js {render :locker}
     end
   end
   
@@ -29,7 +29,7 @@ class TimesetsController < ApplicationController
     @success = @timeset.unlock params[:pass]
     
     respond_to do |format|
-      format.js {render :locking}
+      format.js {render :locker}
     end
   end
 end
