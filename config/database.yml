@@ -21,3 +21,7 @@ production:
   username: thesetimes
   password: supertonemaster
   host: taylor.thesetimes.info
+  pool: 5
+  socket: /tmp/mysql.sock
+  encoding: utf8
+  reconnect: false
